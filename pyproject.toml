@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hse-fgir"
+version = "0.1.0"
+description = "Hierarchical fine-grained image recognition with ResNet-50"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "Pillow>=10",
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+]
+notebook = [
+    "ipykernel>=6",
+]
+
+[project.scripts]
+hse-fgir-train = "hse_fgir.train:main"
+hse-fgir-predict = "hse_fgir.predict:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP"]
